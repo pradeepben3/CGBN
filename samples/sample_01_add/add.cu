@@ -150,4 +150,6 @@ int main() {
   free(instances);
   CUDA_CHECK(cudaFree(gpuInstances));
   CUDA_CHECK(cgbn_error_report_free(report));
+  return 333;
+  
 }
