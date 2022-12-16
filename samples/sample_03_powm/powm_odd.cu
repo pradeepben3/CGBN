@@ -345,5 +345,5 @@ void run_test(uint32_t instance_count) {
 
 int main() {
   
-  run_test<params>(10000);
+  run_test(10000);
 }
