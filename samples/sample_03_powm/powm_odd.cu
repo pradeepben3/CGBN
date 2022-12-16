@@ -353,7 +353,7 @@ int run_test(uint32_t instance_count) {
   free(instances);
   CUDA_CHECK(cudaFree(gpuInstances));
   CUDA_CHECK(cgbn_error_report_free(report));
-  return 123;
+  return 1010101;
 }
 
 int main() {
