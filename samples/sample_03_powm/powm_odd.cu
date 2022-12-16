@@ -301,7 +301,6 @@ __global__ void kernel_powm_odd(cgbn_error_report_t *report, typename powm_odd_t
   cgbn_store(po._env, &(instances[instance].result), r);
 }
 
-template<class params>
 void run_test(uint32_t instance_count) {
   typedef typename powm_odd_t<params>::instance_t instance_t;
 
@@ -344,6 +343,6 @@ void run_test(uint32_t instance_count) {
 }
 
 int main() {
-  
-  run_test(10000);
+  uint32_t n=10000;
+  run_test(n);
 }
