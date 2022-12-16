@@ -34,8 +34,7 @@ volta:
 	nvcc $(INC) $(LIB) -I../../include -arch=sm_70 powm_odd.cu -o powmo -lgmp
 
 turing: 
-	nvcc $(INC) $(LIB) -I../../include -arch=sm_75 powm_odd.cu -o powmo -lgmp
-
+	nvcc $(INC) $(LIB) -I../../include -arch=sm_75 add.cu -o add.so -lgmp -Xcompiler -fPIC -shared
 ampere: 
 	nvcc $(INC) $(LIB) -I../../include -arch=sm_80 powm_odd.cu -o powmo -lgmp
 
