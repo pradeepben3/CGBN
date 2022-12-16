@@ -210,17 +210,6 @@ class powm_odd_t {
       cgbn_set_ui32(_env, result, 1);
     }
   }
-  
-void random_words(uint32_t *x, uint32_t count) {
-  int index;
-
-  for(index=0;index<count;index++)
-    x[index]=random_word(index);
-}
-uint32_t random_word(int x) {
-  uint32_t random[] ={0xafffffff,0xbfffffff,0xffffafff,0xffffffff,0xfffffff,0xffffffff,0xaffffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffff,0xffffff,0xffbffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffaffff};
-  return random[x];
-}
 
   __host__ static instance_t *generate_instances(uint32_t count) {
     instance_t *instances=(instance_t *)malloc(sizeof(instance_t)*count);
