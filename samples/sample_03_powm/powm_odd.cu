@@ -72,7 +72,7 @@ class powm_odd_t {
     cgbn_mem_t<params::BITS> modulus;
     cgbn_mem_t<params::BITS> result;
   } instance_t;
-
+  typedef powm_params_t<8, 1024, 5> params;
   typedef cgbn_context_t<params::TPI, params>   context_t;
   typedef cgbn_env_t<context_t, params::BITS>   env_t;
   typedef typename env_t::cgbn_t                bn_t;
@@ -344,7 +344,6 @@ void run_test(uint32_t instance_count) {
 }
 
 int main() {
-  typedef powm_params_t<8, 1024, 5> params;
   
   run_test<params>(10000);
 }
