@@ -72,7 +72,7 @@ class powm_odd_t {
     cgbn_mem_t<params::BITS> modulus;
     cgbn_mem_t<params::BITS> result;
   } instance_t;
-  typedef powm_params_t<8, 1024, 5> params;
+
   typedef cgbn_context_t<params::TPI, params>   context_t;
   typedef cgbn_env_t<context_t, params::BITS>   env_t;
   typedef typename env_t::cgbn_t                bn_t;
@@ -301,7 +301,8 @@ __global__ void kernel_powm_odd(cgbn_error_report_t *report, typename powm_odd_t
   cgbn_store(po._env, &(instances[instance].result), r);
 }
 
-void run_test(uint32_t instance_count) {
+template<class params>
+int run_test(uint32_t instance_count) {
   typedef typename powm_odd_t<params>::instance_t instance_t;
 
   instance_t          *instances, *gpuInstances;
@@ -340,9 +341,10 @@ void run_test(uint32_t instance_count) {
   free(instances);
   CUDA_CHECK(cudaFree(gpuInstances));
   CUDA_CHECK(cgbn_error_report_free(report));
+  return 123;
 }
 
 int main() {
-  uint32_t n=10000;
-  run_test(n);
+  typedef powm_params_t<8, 1024, 5> params;
+  return run_test<params>(10000);
 }
