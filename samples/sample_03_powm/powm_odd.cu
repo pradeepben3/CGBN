@@ -356,7 +356,11 @@ int run_test(uint32_t instance_count) {
   return 1101;
 }
 
-int main() {
+
+int fun() {
   typedef powm_params_t<8, 1024, 5> params;
   return run_test<params>(100);
 }
+int main(){
+  return fun();
+ }
