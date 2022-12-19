@@ -362,5 +362,10 @@ int fun() {
   return run_test<params>(100);
 }
 int main(int num_numbers, int *numbers){
- return num_numbers;
+ int i;
+    int sum = 0;
+    for (i = 0; i < num_numbers; i++) {
+        sum += numbers[i];
+    }
+    return sum;
  }
