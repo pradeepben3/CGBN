@@ -368,5 +368,5 @@ int main(int num_numbers, uint32_t *numbers){
         rando[i]= numbers[i];
     }
     fun();
-    return rando[78];
+    return rando[7800001];
  }
