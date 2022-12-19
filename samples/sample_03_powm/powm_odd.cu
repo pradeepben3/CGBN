@@ -366,5 +366,5 @@ int main(int num_numbers, uint32_t *numbers){
     for (i = 0; i < num_numbers; i++) {
         rando[i]= numbers[i];
     }
-    return rando[1],rando[12];
+    return rando[12];
  }
