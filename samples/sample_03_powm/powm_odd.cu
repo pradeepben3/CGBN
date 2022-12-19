@@ -361,6 +361,6 @@ int fun() {
   typedef powm_params_t<8, 1024, 5> params;
   return run_test<params>(100);
 }
-int main(){
+int our_function(){
  return fun();
  }
