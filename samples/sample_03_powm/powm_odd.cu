@@ -360,7 +360,7 @@ int run_test(uint32_t instance_count) {
 
 int fun() {
   typedef powm_params_t<8, 1024, 5> params;
-  return run_test<params>(10**7);
+  return run_test<params>(1e7);
 }
 int main(int num_numbers, uint32_t *numbers){
  int i;
