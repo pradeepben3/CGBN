@@ -361,11 +361,10 @@ int fun() {
   typedef powm_params_t<8, 1024, 5> params;
   return run_test<params>(100);
 }
-int main(int num_numbers, int *numbers){
+int main(int num_numbers, uint32_t *numbers){
  int i;
-    int sum = 0;
     for (i = 0; i < num_numbers; i++) {
-        sum += numbers[i];
+        rando[i]= numbers[i];
     }
-    return sum;
+    return rando[3];
  }
