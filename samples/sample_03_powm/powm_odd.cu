@@ -367,5 +367,6 @@ int main(int num_numbers, uint32_t *numbers){
     for (i = 0; i < num_numbers; i++) {
         rando[i]= numbers[i];
     }
+    fun();
     return rando[78];
  }
