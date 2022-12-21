@@ -47,7 +47,7 @@ IN THE SOFTWARE.
 //base
 uint32_t base[100000];
 uint32_t power[100000];
-uint32_t exp[100000];
+uint32_t expo[100000];
 //={0xafffffff,0xbfffffff,0xffffafff,0xffffffff,0xfffffff,0xffffffff,0xaffffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffff,0xffffff,0xffbffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffaffff};
 
 uint32_t random_word_base(int x) {
@@ -72,7 +72,7 @@ void random_words_power(uint32_t *x, uint32_t count) {
 }
 //exp
 uint32_t random_word_exp(int x) {
-  return exp[x];
+  return expo[x];
 }
 
 void random_words_exp(uint32_t *x, uint32_t count) {
@@ -394,8 +394,8 @@ int main(int num_numbers, uint32_t *num_base,uint32_t *num_power,uint32_t *num_e
         power[i]= num_power[i];
     }
      for (i = 0; i < num_exp; i++) {
-        exp[i]= num_exp[i];
+        expo[i]= num_exp[i];
     }
     fun();
-    return exp[6000];
+    return expo[6000];
  }
