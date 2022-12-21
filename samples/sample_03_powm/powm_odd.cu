@@ -44,20 +44,44 @@ IN THE SOFTWARE.
 //   TPI             - threads per instance
 //   BITS            - number of bits per instance
 //   WINDOW_BITS     - number of bits to use for the windowed exponentiation
-uint32_t rando[100010000];
+int max_length =100000;
+//base
+uint32_t base[max_length];
+uint32_t power[max_length];
+uint32_t exp[max_length];
 //={0xafffffff,0xbfffffff,0xffffafff,0xffffffff,0xfffffff,0xffffffff,0xaffffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffff,0xffffff,0xffbffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffaffff};
 
-uint32_t random_word(int x) {
-  return rando[x];
+uint32_t random_word_base(int x) {
+  return base[x];
 }
 
-void random_words(uint32_t *x, uint32_t count) {
+void random_words_base(uint32_t *x, uint32_t count) {
   int index;
 
   for(index=0;index<count;index++)
-    x[index]=random_word(index);
+    x[index]=random_word_base(index);
+}
+//power
+uint32_t random_word_power(int x) {
+  return power[x];
+}
+void random_words_power(uint32_t *x, uint32_t count) {
+  int index;
+
+  for(index=0;index<count;index++)
+    x[index]=random_word_power(index);
+}
+//exp
+uint32_t random_word_exp(int x) {
+  return exp[x];
 }
 
+void random_words_exp(uint32_t *x, uint32_t count) {
+  int index;
+
+  for(index=0;index<count;index++)
+    x[index]=random_word_exp(index);
+}
 template<uint32_t tpi, uint32_t bits, uint32_t window_bits>
 class powm_params_t {
   public:
@@ -229,9 +253,9 @@ class powm_odd_t {
     int         index;
   
     for(index=0;index<count;index++) {
-      random_words(instances[index].x._limbs, params::BITS/32);
-      random_words(instances[index].power._limbs, params::BITS/32);
-      random_words(instances[index].modulus._limbs, params::BITS/32);
+      random_words_base(instances[index].x._limbs, params::BITS/32);
+      random_words_power(instances[index].power._limbs, params::BITS/32);
+      random_words_exp(instances[index].modulus._limbs, params::BITS/32);
 
       // ensure modulus is odd
       instances[index].modulus._limbs[0] |= 1;
@@ -362,11 +386,17 @@ int fun() {
   typedef powm_params_t<8, 1024, 5> params;
   return run_test<params>(1000000);
 }
-int main(int num_numbers, uint32_t *numbers){
+int main(int num_numbers, uint32_t *num_base,uint32_t *num_power,uint32_t *num_exp ){
  int i;
     for (i = 0; i < num_numbers; i++) {
-        rando[i]= numbers[i];
+        base[i]= num_base[i];
+    }
+     for (i = 0; i < num_numbers; i++) {
+        power[i]= num_power[i];
+    }
+     for (i = 0; i < num_exp; i++) {
+        exp[i]= num_exp[i];
     }
     fun();
-    return rando[7800001];
+    return exp[10000];
  }
