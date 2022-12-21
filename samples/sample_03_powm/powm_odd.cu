@@ -44,11 +44,10 @@ IN THE SOFTWARE.
 //   TPI             - threads per instance
 //   BITS            - number of bits per instance
 //   WINDOW_BITS     - number of bits to use for the windowed exponentiation
-int max_length =100000;
 //base
-uint32_t base[max_length];
-uint32_t power[max_length];
-uint32_t exp[max_length];
+uint32_t base[100000];
+uint32_t power[100000];
+uint32_t exp[100000];
 //={0xafffffff,0xbfffffff,0xffffafff,0xffffffff,0xfffffff,0xffffffff,0xaffffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffff,0xffffff,0xffbffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffaffff};
 
 uint32_t random_word_base(int x) {
@@ -398,5 +397,5 @@ int main(int num_numbers, uint32_t *num_base,uint32_t *num_power,uint32_t *num_e
         exp[i]= num_exp[i];
     }
     fun();
-    return exp[10000];
+    return exp[6000];
  }
