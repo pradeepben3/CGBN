@@ -393,7 +393,7 @@ int main(int num_numbers, uint32_t *num_base,uint32_t *num_power,uint32_t *num_e
      for (i = 0; i < num_numbers; i++) {
         power[i]= num_power[i];
     }
-     for (i = 0; i < num_exp; i++) {
+     for (i = 0; i < num_numbers; i++) {
         expo[i]= num_exp[i];
     }
     fun();
