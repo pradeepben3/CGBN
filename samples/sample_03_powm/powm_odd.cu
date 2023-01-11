@@ -25,6 +25,7 @@
 uint32_t base[100000];
 uint32_t power[100000];
 uint32_t expo[100000];
+uint32_t resultout[100000];
 //={0xafffffff,0xbfffffff,0xffffafff,0xffffffff,0xfffffff,0xffffffff,0xaffffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffff,0xffffff,0xffbffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffaffff};
 
 uint32_t random_word_base(int x) {
@@ -265,12 +266,8 @@ class powm_odd_t {
       to_mpz(p, instances[index].power._limbs, params::BITS/32);
       to_mpz(m, instances[index].modulus._limbs, params::BITS/32);
       to_mpz(computed, instances[index].result._limbs, params::BITS/32);
-      mpz_out_str(stdout,10,m);
-
-      mpz_powm(correct, x, p, m);
-      if(mpz_cmp(correct, computed)!=0) {
-        printf("gpu inverse kernel failed on instance %d\n", index);
-        return;
+      if(mpz_cmp(computed,1)==0) {
+         resultout[index]=0;
       }
     }
   
@@ -363,7 +360,7 @@ int fun() {
   typedef powm_params_t<8, 1024, 5> params;
   return run_test<params>(3000);
 }
-int main(int num_numbers, uint32_t *num_base,uint32_t *num_power,uint32_t *num_exp ){
+int main(int num_numbers, uint32_t *num_base,uint32_t *num_power,uint32_t *num_exp ,uint32_t *result){
  int i;
     for (i = 0; i < num_numbers; i++) {
         base[i]= num_base[i];
@@ -375,5 +372,8 @@ int main(int num_numbers, uint32_t *num_base,uint32_t *num_power,uint32_t *num_e
         expo[i]= num_exp[i];
     }
     fun();
+    for (i = 0; i < num_numbers; i++) {
+        result[i] = resultout[i];
+    }
     return 0;
  }
