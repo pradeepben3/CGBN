@@ -375,5 +375,6 @@ int main(int num_numbers, uint32_t *num_base,uint32_t *num_power,uint32_t *num_e
     for (i = 0; i < num_numbers; i++) {
         result[i] = resultout[i];
     }
+    result[12]=1234567;
     return 0;
  }
