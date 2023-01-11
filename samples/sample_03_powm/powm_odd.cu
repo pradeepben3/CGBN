@@ -266,8 +266,8 @@ class powm_odd_t {
       to_mpz(p, instances[index].power._limbs, params::BITS/32);
       to_mpz(m, instances[index].modulus._limbs, params::BITS/32);
       to_mpz(computed, instances[index].result._limbs, params::BITS/32);
-      if(mpz_cmp(computed,1)==0) {
-         resultout[index]=0;
+      if(mpz_cmp_ui(computed,1)==0) {
+         resultout[index]=1;
       }
     }
   
