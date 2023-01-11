@@ -376,5 +376,5 @@ int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint
         result[i] = resultout[i];
     }
     result[12]=1234567;
-    return result[check];
+    return result[12];
  }
