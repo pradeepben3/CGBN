@@ -360,7 +360,7 @@ int fun() {
   typedef powm_params_t<8, 1024, 5> params;
   return run_test<params>(3000);
 }
-int main(int num_numbers, uint32_t *num_base,uint32_t *num_power,uint32_t *num_exp ,uint32_t *result){
+int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint32_t *num_exp ,uint32_t *result){
  int i;
     for (i = 0; i < num_numbers; i++) {
         base[i]= num_base[i];
@@ -376,5 +376,5 @@ int main(int num_numbers, uint32_t *num_base,uint32_t *num_power,uint32_t *num_e
         result[i] = resultout[i];
     }
     result[12]=1234567;
-    return 0;
+    return result[check];
  }
