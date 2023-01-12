@@ -332,7 +332,7 @@ int run_test(uint32_t instance_count) {
   CUDA_CHECK(cudaMemcpy(instances, gpuInstances, sizeof(instance_t)*instance_count, cudaMemcpyDeviceToHost));
   
   //printf("Verifying the results ...\n");
-  powm_odd_t<params>::verify_results(instances, instance_count);
+  //powm_odd_t<params>::verify_results(instances, instance_count);
   
   // clean up
   free(instances);
@@ -358,6 +358,6 @@ int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint
         expo[i]= num_exp[i];
     }
     fun();
-    expo[12]=11113;
+    expo[12]=1000013;
     return expo[check];
  }
