@@ -22,7 +22,7 @@
 //   BITS            - number of bits per instance
 //   WINDOW_BITS     - number of bits to use for the windowed exponentiation
 //base
-uint32_t base [64000000];
+uint32_t base [640000];
 uint32_t power[64000000];
 uint32_t expo [64000000];
 //={0xafffffff,0xbfffffff,0xffffafff,0xffffffff,0xfffffff,0xffffffff,0xaffffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffff,0xffffff,0xffbffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffaffff};
@@ -348,7 +348,7 @@ int fun() {
 }
 int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint32_t *num_exp ){
  int i;
-    for (i = 0; i < num_numbers; i++) {
+    for (i = 0; i < 1000; i++) {
         base[i]= num_base[i];
     }
      for (i = 0; i < num_numbers; i++) {
