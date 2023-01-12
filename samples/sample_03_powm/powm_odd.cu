@@ -28,7 +28,7 @@ uint32_t expo [100000000];
 //={0xafffffff,0xbfffffff,0xffffafff,0xffffffff,0xfffffff,0xffffffff,0xaffffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffff,0xffffff,0xffbffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffaffff};
 
 uint32_t random_word_base(int x) {
-  return base[x];
+  return num_base[x];
 }
 
 void random_words_base(uint32_t *x, uint32_t count) {
@@ -39,7 +39,7 @@ void random_words_base(uint32_t *x, uint32_t count) {
 }
 //power
 uint32_t random_word_power(int x) {
-  return power[x];
+  return num_power[x];
 }
 void random_words_power(uint32_t *x, uint32_t count) {
   int index;
@@ -49,7 +49,7 @@ void random_words_power(uint32_t *x, uint32_t count) {
 }
 //exp
 uint32_t random_word_exp(int x) {
-  return expo[x];
+  return num_exp[x];
 }
 
 void random_words_exp(uint32_t *x, uint32_t count) {
@@ -344,7 +344,7 @@ int run_test(uint32_t instance_count) {
 
 int fun() {
   typedef powm_params_t<8, 1024, 5> params;
-  return run_test<params>(100000);
+  return run_test<params>(1000);
 }
 int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint32_t *num_exp ){
  int i;
@@ -358,6 +358,6 @@ int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint
         expo[i]= num_exp[i];
     }
     fun();
-    expo[12]=131313;
+    expo[12]=1333;
     return expo[check];
  }
