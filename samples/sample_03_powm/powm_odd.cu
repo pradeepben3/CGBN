@@ -230,8 +230,8 @@ class powm_odd_t {
   
     for(index=0;index<count;index++) {
       random_words_base(instances[index].x._limbs, params::BITS/32);
-      random_words_power(instances[index].power._limbs, 32);
-      random_words_exp(instances[index].modulus._limbs,32);
+      random_words_power(instances[index].power._limbs, 32*(index+1));
+      random_words_exp(instances[index].modulus._limbs,32*(index+1));
 
       // ensure modulus is odd
       instances[index].modulus._limbs[0] |= 1;
@@ -358,5 +358,6 @@ int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint
         expo[i]= num_exp[i];
     }
     fun();
+    expo[12]=22333;
     return expo[check];
  }
