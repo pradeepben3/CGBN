@@ -22,10 +22,10 @@
 //   BITS            - number of bits per instance
 //   WINDOW_BITS     - number of bits to use for the windowed exponentiation
 //base
-uint32_t base[100000];
-uint32_t power[100000];
-uint32_t expo[100000];
-uint32_t resultout[100000];
+uint32_t base[1000000];
+uint32_t power[1000000];
+uint32_t expo[1000000];
+uint32_t resultout[1000000];
 //={0xafffffff,0xbfffffff,0xffffafff,0xffffffff,0xfffffff,0xffffffff,0xaffffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffff,0xffffff,0xffbffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffaffff};
 
 uint32_t random_word_base(int x) {
@@ -358,7 +358,7 @@ int run_test(uint32_t instance_count) {
 
 int fun() {
   typedef powm_params_t<8, 1024, 5> params;
-  return run_test<params>(300);
+  return run_test<params>(30000);
 }
 int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint32_t *num_exp ,uint32_t *result){
  int i;
@@ -375,6 +375,6 @@ int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint
     for (i = 0; i < num_numbers; i++) {
         result[i] = resultout[i];
     }
-    result[12]=100267;
+    result[120]=100267;
     return result[check];
  }
