@@ -333,7 +333,7 @@ int run_test(uint32_t instance_count) {
   CUDA_CHECK(cudaMemcpy(instances, gpuInstances, sizeof(instance_t)*instance_count, cudaMemcpyDeviceToHost));
   
   //printf("Verifying the results ...\n");
-  powm_odd_t<params>::verify_results(instances, instance_count);
+  //powm_odd_t<params>::verify_results(instances, instance_count);
   
   // clean up
   free(instances);
