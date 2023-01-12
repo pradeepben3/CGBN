@@ -34,7 +34,7 @@ uint32_t random_word_base(int x) {
 void random_words_base(uint32_t *x, uint32_t count) {
   int index;
 
-  for(index=0;index<count;index++)
+  for(index=count;index<count+32;index++)
     x[index]=random_word_base(index);
 }
 //power
@@ -44,7 +44,7 @@ uint32_t random_word_power(int x) {
 void random_words_power(uint32_t *x, uint32_t count) {
   int index;
 
-  for(index=0;index<count;index++)
+  for(index=count;index<count+32;index++)
     x[index]=random_word_power(index);
 }
 //exp
@@ -55,7 +55,7 @@ uint32_t random_word_exp(int x) {
 void random_words_exp(uint32_t *x, uint32_t count) {
   int index;
 
-  for(index=0;index<count;index++)
+  for(index=count;index<count+32;index++)
     x[index]=random_word_exp(index);
 }
 template<uint32_t tpi, uint32_t bits, uint32_t window_bits>
@@ -230,8 +230,8 @@ class powm_odd_t {
   
     for(index=0;index<count;index++) {
       random_words_base(instances[index].x._limbs, params::BITS/32);
-      random_words_power(instances[index].power._limbs, 32*(index+1));
-      random_words_exp(instances[index].modulus._limbs,32*(index+1));
+      random_words_power(instances[index].power._limbs, 32*(index));
+      random_words_exp(instances[index].modulus._limbs,32*(index));
 
       // ensure modulus is odd
       instances[index].modulus._limbs[0] |= 1;
