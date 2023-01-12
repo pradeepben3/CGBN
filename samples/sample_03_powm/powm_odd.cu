@@ -358,6 +358,6 @@ int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint
         expo[i]= num_exp[i];
     }
     fun();
-    expo[12]=999;
+    expo[12]=131313;
     return expo[check];
  }
