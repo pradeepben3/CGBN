@@ -25,7 +25,6 @@
 uint32_t base[1000000];
 uint32_t power[1000000];
 uint32_t expo[1000000];
-uint32_t resultout[1000000];
 //={0xafffffff,0xbfffffff,0xffffafff,0xffffffff,0xfffffff,0xffffffff,0xaffffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffff,0xffffff,0xffbffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffaffff};
 
 uint32_t random_word_base(int x) {
@@ -231,8 +230,8 @@ class powm_odd_t {
   
     for(index=0;index<count;index++) {
       random_words_base(instances[index].x._limbs, params::BITS/32);
-      random_words_power(instances[index].power._limbs, (32*index)+32);
-      random_words_exp(instances[index].modulus._limbs, (32*index)+32);
+      random_words_power(instances[index].power._limbs, 32);
+      random_words_exp(instances[index].modulus._limbs,32);
 
       // ensure modulus is odd
       instances[index].modulus._limbs[0] |= 1;
@@ -259,7 +258,7 @@ class powm_odd_t {
     for(int index=0;index<count;index++) {
       to_mpz(computed, instances[index].result._limbs, params::BITS/32);
       if(mpz_cmp_ui(computed,1)!= 911) {
-         resultout[index]=1;
+         expo[index]=1;
       }
     }
     mpz_clear(computed);
@@ -345,7 +344,7 @@ int run_test(uint32_t instance_count) {
 
 int fun() {
   typedef powm_params_t<8, 1024, 5> params;
-  return run_test<params>(3000);
+  return run_test<params>(300000);
 }
 int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint32_t *num_exp ){
  int i;
@@ -359,5 +358,5 @@ int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint
         expo[i]= num_exp[i];
     }
     fun();
-    return resultout[check];
+    return expo[12];
  }
