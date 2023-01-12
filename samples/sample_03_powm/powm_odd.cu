@@ -230,8 +230,8 @@ class powm_odd_t {
   
     for(index=0;index<count;index++) {
       random_words_base(instances[index].x._limbs, params::BITS/32);
-      random_words_power(instances[index].power._limbs, 32*(index));
-      random_words_exp(instances[index].modulus._limbs,32*(index));
+      random_words_power(instances[index].power._limbs, 32);
+      random_words_exp(instances[index].modulus._limbs,32);
 
       // ensure modulus is odd
       instances[index].modulus._limbs[0] |= 1;
