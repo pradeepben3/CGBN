@@ -258,7 +258,7 @@ class powm_odd_t {
     for(int index=0;index<count;index++) {
       to_mpz(computed, instances[index].result._limbs, params::BITS/32);
       if(mpz_cmp_ui(computed,1)!= 911) {
-         expo[index]=1;
+         expo[index] = 1;
       }
     }
     mpz_clear(computed);
@@ -332,7 +332,7 @@ int run_test(uint32_t instance_count) {
   CUDA_CHECK(cudaMemcpy(instances, gpuInstances, sizeof(instance_t)*instance_count, cudaMemcpyDeviceToHost));
   
   //printf("Verifying the results ...\n");
-  //powm_odd_t<params>::verify_results(instances, instance_count);
+  powm_odd_t<params>::verify_results(instances, instance_count);
   
   // clean up
   free(instances);
@@ -358,5 +358,5 @@ int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint
         expo[i]= num_exp[i];
     }
     fun();
-    return expo[12];
+    return expo[check];
  }
