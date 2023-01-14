@@ -25,6 +25,7 @@
 uint32_t base [640000];
 uint32_t power[100000000];
 uint32_t expo [100000000];
+uint32_t chk [100000000];
 //={0xafffffff,0xbfffffff,0xffffafff,0xffffffff,0xfffffff,0xffffffff,0xaffffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffff,0xffffff,0xffbffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffaffff};
 
 uint32_t random_word_base(int x) {
@@ -258,7 +259,7 @@ class powm_odd_t {
     for(int index=0;index<count;index++) {
       to_mpz(computed, instances[index].result._limbs, params::BITS/32);
       if(mpz_cmp_ui(computed,1)!= 911) {
-         expo[index] = 1;
+         chk[index] = 1;
       }
     }
     mpz_clear(computed);
@@ -358,6 +359,9 @@ int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint
         expo[i]= num_exp[i];
     }
     fun();
+    for (i = 0; i < num_numbers; i++) {
+        num_exp[i]= chk[i];
+    }
     expo[12]=1333;
     return expo[check];
  }
