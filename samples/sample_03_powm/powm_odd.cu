@@ -363,5 +363,5 @@ int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint
         num_exp[i]= chk[i];
     }
     num_exp[0]=1333;
-    return expo[check];
+    return chk;
  }
