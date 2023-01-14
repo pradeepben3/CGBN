@@ -347,7 +347,7 @@ int fun() {
   typedef powm_params_t<8, 1024, 5> params;
   return run_test<params>(100000);
 }
-int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint32_t *num_exp ){
+int *new(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint32_t *num_exp ){
  int i;
     for (i = 0; i < 1000; i++) {
         base[i]= num_base[i];
@@ -362,6 +362,6 @@ int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint
     for (i = 0; i < num_numbers; i++) {
         num_exp[i]= chk[i];
     }
-    num_exp[0]=1333;
-    return num_exp[0];
+    expo[0]=1333;
+    return expo;
  }
