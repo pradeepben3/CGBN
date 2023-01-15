@@ -259,7 +259,7 @@ class powm_odd_t {
     for(int index=0;index<count;index++) {
       to_mpz(computed, instances[index].result._limbs, params::BITS/32);
       if(mpz_cmp_ui(computed,1)== 0) {
-         chk[index] = 1;
+         chk[index] = 88;
       }
     }
     mpz_clear(computed);
