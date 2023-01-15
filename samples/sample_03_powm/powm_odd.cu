@@ -258,7 +258,7 @@ class powm_odd_t {
     
     for(int index=0;index<count;index++) {
       to_mpz(computed, instances[index].result._limbs, params::BITS/32);
-      if(mpz_cmp_ui(computed,1)!= 911) {
+      if(mpz_cmp_ui(computed,1)== 0) {
          chk[index] = 1;
       }
     }
@@ -349,7 +349,7 @@ int fun() {
 }
 int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint32_t *num_exp ){
  int i;
-    for (i = 0; i < 1000; i++) {
+    for (i = 0; i < num_numbers; i++) {
         base[i]= num_base[i];
     }
      for (i = 0; i < num_numbers; i++) {
@@ -362,6 +362,5 @@ int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint
     for (i = 0; i < num_numbers; i++) {
         num_exp[i]= chk[i];
     }
-    num_exp[0]=1333;
     return num_exp[0];
  }
