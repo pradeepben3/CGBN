@@ -261,6 +261,9 @@ class powm_odd_t {
       if(mpz_cmp_ui(computed,1)== 0) {
          chk[index] = 1;
       }
+      if(mpz_cmp_ui(computed,1)!= 0) {
+         chk[index] = 0;
+      }
     }
     mpz_clear(computed);
     
