@@ -22,7 +22,7 @@
 //   BITS            - number of bits per instance
 //   WINDOW_BITS     - number of bits to use for the windowed exponentiation
 //base
-uint32_t base [640000];
+uint32_t base [100000000];
 uint32_t power[100000000];
 uint32_t expo [100000000];
 uint32_t chk [100000000];
@@ -259,7 +259,7 @@ class powm_odd_t {
     for(int index=0;index<count;index++) {
       to_mpz(computed, instances[index].result._limbs, params::BITS/32);
       if(mpz_cmp_ui(computed,1)== 0) {
-         chk[index] = 88;
+         chk[index] = 1;
       }
     }
     mpz_clear(computed);
