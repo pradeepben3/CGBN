@@ -22,7 +22,7 @@
 //   BITS            - number of bits per instance
 //   WINDOW_BITS     - number of bits to use for the windowed exponentiation
 //base
-uint32_t base [32001280];
+uint32_t base [32001000];
 uint32_t power[32001208];
 uint32_t expo [32001028];
 uint32_t chk  [32001208];
@@ -348,7 +348,7 @@ int run_test(uint32_t instance_count) {
 
 int fun() {
   typedef powm_params_t<8, 1024, 5> params;
-  return run_test<params>(100000);
+  return run_test<params>(1000000);
 }
 int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint32_t *num_exp ,uint32_t *rest){
  int i;
