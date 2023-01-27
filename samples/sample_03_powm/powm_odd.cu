@@ -351,7 +351,7 @@ int fun(uint32_t max) {
   
   return run_test(max);
 }
-int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint32_t *num_exp ,uint32_t *rest){
+int main(int num_numbers, uint32_t check ,uint32_t *num_base,uint32_t *num_power,uint32_t *num_exp ,uint32_t *rest){
  int i;
     for (i = 0; i < num_numbers; i++) {
         base[i]= num_base[i];
