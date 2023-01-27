@@ -350,7 +350,7 @@ int fun(uint32_t max) {
   typedef powm_params_t<8, 1024, 5> params;
   uint32_t tr;
   tr=max;
-  return run_test(tr);
+  return run_test<params>(tr);
 }
 int main(int num_numbers, uint32_t check ,uint32_t *num_base,uint32_t *num_power,uint32_t *num_exp ,uint32_t *rest){
  int i;
