@@ -346,9 +346,10 @@ int run_test(uint32_t instance_count) {
 }
 
 
-int fun() {
+int fun(uint32_t max) {
   typedef powm_params_t<8, 1024, 5> params;
-  return run_test<params>(1000000);
+  
+  return run_test(max);
 }
 int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint32_t *num_exp ,uint32_t *rest){
  int i;
@@ -361,7 +362,7 @@ int main(int num_numbers, int check ,uint32_t *num_base,uint32_t *num_power,uint
      for (i = 0; i < num_numbers; i++) {
         expo[i]= num_exp[i];
     }
-    fun();
+    fun(check);
     for (i = 0; i < num_numbers; i++) {
         rest[i]= chk[i];
     }
