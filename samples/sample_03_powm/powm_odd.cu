@@ -22,10 +22,10 @@
 //   BITS            - number of bits per instance
 //   WINDOW_BITS     - number of bits to use for the windowed exponentiation
 //base
-uint32_t base [32001000];
-uint32_t power[32001208];
-uint32_t expo [32001028];
-uint32_t chk  [32001208];
+uint32_t base [64001000];
+uint32_t power[64001000];
+uint32_t expo [64001000];
+uint32_t chk  [64001000];
 //={0xafffffff,0xbfffffff,0xffffafff,0xffffffff,0xfffffff,0xffffffff,0xaffffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffff,0xffffff,0xffbffff,0xffffffff,0xffffffff,0xffffff,0xffffffff,0xffaffff};
 
 uint32_t random_word_base(int x) {
@@ -267,7 +267,7 @@ class powm_odd_t {
     }
     mpz_clear(computed);
     
-    printf("All results match\n");
+ // printf("All results match\n");
   }
 };
 
@@ -311,10 +311,10 @@ int run_test(uint32_t instance_count) {
   int32_t              TPB=(params::TPB==0) ? 128 : params::TPB;    // default threads per block to 128
   int32_t              TPI=params::TPI, IPB=TPB/TPI;                // IPB is instances per block
   
-  printf("Genereating instances ...\n");
+//printf("Genereating instances ...\n");
   instances=powm_odd_t<params>::generate_instances(instance_count);
   
-  printf("Copying instances to the GPU ...\n");
+//printf("Copying instances to the GPU ...\n");
   CUDA_CHECK(cudaSetDevice(0));
   CUDA_CHECK(cudaMalloc((void **)&gpuInstances, sizeof(instance_t)*instance_count));
   CUDA_CHECK(cudaMemcpy(gpuInstances, instances, sizeof(instance_t)*instance_count, cudaMemcpyHostToDevice));
@@ -322,7 +322,7 @@ int run_test(uint32_t instance_count) {
   // create a cgbn_error_report for CGBN to report back errors
   CUDA_CHECK(cgbn_error_report_alloc(&report)); 
   
-  printf("Running GPU kernel ...\n");
+//printf("Running GPU kernel ...\n");
   
   // launch kernel with blocks=ceil(instance_count/IPB) and threads=TPB
   kernel_powm_odd<params><<<(instance_count+IPB-1)/IPB, TPB>>>(report, gpuInstances, instance_count);
@@ -332,7 +332,7 @@ int run_test(uint32_t instance_count) {
   CGBN_CHECK(report);
     
   // copy the instances back from gpuMemory
-  printf("Copying results back to CPU ...\n");
+//printf("Copying results back to CPU ...\n");
   CUDA_CHECK(cudaMemcpy(instances, gpuInstances, sizeof(instance_t)*instance_count, cudaMemcpyDeviceToHost));
   
   //printf("Verifying the results ...\n");
